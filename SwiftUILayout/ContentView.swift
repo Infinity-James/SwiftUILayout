@@ -19,14 +19,14 @@ private extension HorizontalAlignment_ {
 struct ContentView: View {
 	@State var opacity: Double = 0.5
 	@State var width: CGFloat = 300
-	
 	let size = CGSize(width: 800, height: 600)
 	var sample: some View_{
-		HStack_(children: [
-            AnyView_(Rectangle_().foregroundColor(.red).measured),
-			AnyView_(Rectangle_().foregroundColor(.yellow).frame(minWidth: 74).measured),
-			AnyView_(Rectangle_().foregroundColor(.blue).frame(maxWidth: 23).measured),
-		], spacing: 0)
+		VerticalGrid(columns: [100, 200], content: [
+			AnyView_(Rectangle_().foregroundColor(.red).measured),
+			AnyView_(Rectangle_().foregroundColor(.green).frame(minWidth: 74, minHeight: 50).measured),
+			AnyView_(Rectangle_().foregroundColor(.orange).frame(maxWidth: 23).measured)
+		])
+		.border(.gray, width: 2)
 		.frame(width: width, height: 200, alignment: Alignment_(horizontal: .leading, vertical: .center))
 		.border(.purple, width: 4)
 	}
